@@ -1,0 +1,374 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial, sans-serif';
+    background: linear-gradient(135deg, #ffe6e9, #ffb6c1, #ff99c8, #ff6f9c);
+    background-size: 300% 300%;
+    animation: gradient 15s ease infinite;
+    overflow: hidden;
+}
+
+/* Gradient Background Animation */
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    text-align: center;
+    z-index: 10;
+    position: relative;
+}
+
+/* Cake Styles */
+.cake {
+    position: relative;
+    width: 150px; /* Kecilkan ukuran kue */
+    height: 180px; /* Kecilkan tinggi kue */
+    margin-bottom: 20px;
+    z-index: 5; /* Pastikan kue tetap di atas balon */
+}
+
+.layer {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ff6f9c;
+    border-radius: 10px;
+}
+
+.layer-bottom {
+    bottom: 30px;
+    width: 150px; /* Sesuaikan lebar */
+    height: 40px; /* Sesuaikan tinggi */
+    background: #ff99c8;
+}
+
+.layer-middle {
+    bottom: 70px;
+    width: 130px; /* Sesuaikan lebar */
+    height: 35px; /* Sesuaikan tinggi */
+    background: #ff6f9c;
+}
+
+.layer-top {
+    bottom: 110px;
+    width: 110px; /* Sesuaikan lebar */
+    height: 30px; /* Sesuaikan tinggi */
+    background: #ffb6d5;
+}
+
+/* Candles and Flames */
+.candles {
+    position: absolute;
+    bottom: 140px; /* Sesuaikan posisi lilin */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Sesuaikan jarak antar lilin */
+}
+
+.candle {
+    width: 10px; /* Kecilkan ukuran lilin */
+    height: 30px; /* Kecilkan ukuran lilin */
+    background: #fff;
+    border-radius: 5px;
+    position: relative;
+}
+
+.flame {
+    position: absolute;
+    top: -12px; /* Sesuaikan posisi api */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px; /* Sesuaikan ukuran api */
+    height: 10px; /* Sesuaikan ukuran api */
+    background: radial-gradient(circle, #ffeb3b 30%, #ff6f00 60%);
+    border-radius: 50%;
+    animation: flicker 1.5s infinite;
+}
+
+
+@keyframes flicker {
+    0%, 100% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.1); }
+}
+
+/* Message Box */
+.message {
+    background: rgba(255, 240, 246, 0.9);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+    transition: transform 0.3s ease;
+    transform: scale(0.95);
+}
+
+.message:hover {
+    transform: scale(1);
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    color: #ff1493;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+p {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+/* Balloon Animation */
+.balloons {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1; /* Balloons in the background */
+}
+
+.balloon {
+    position: absolute;
+    bottom: -150px;
+    width: 80px; /* Bigger balloon */
+    height: 100px;
+    background-color: #ff6f9c;
+    border-radius: 50%;
+    box-shadow: inset -10px -20px 10px rgba(0, 0, 0, 0.1);
+    animation: rise 10s infinite ease-in-out; /* Slower animation */
+}
+
+.balloon::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 120px; /* Longer string */
+    background-color: #333;
+    left: 50%;
+    top: 100%;
+}
+
+@keyframes rise {
+    0% {
+        transform: translateX(0) translateY(0) scale(1);
+    }
+    50% {
+        transform: translateX(50px) translateY(-50vh) scale(1.2);
+    }
+    100% {
+        transform: translateX(calc(-100vw + 80px)) translateY(-100vh) scale(1);
+    }
+}
+
+.balloon:nth-child(2) {
+    left: 10%;
+    animation-duration: 8s;
+    animation-delay: 0.2s;
+}
+
+.balloon:nth-child(3) {
+    left: 20%;
+    animation-duration: 9s;
+    animation-delay: 0.4s;
+}
+
+.balloon:nth-child(4) {
+    left: 30%;
+    animation-duration: 7s;
+    animation-delay: 0.6s;
+}
+
+.balloon:nth-child(5) {
+    left: 40%;
+    animation-duration: 12s;
+    animation-delay: 0.8s;
+}
+
+.balloon:nth-child(6) {
+    left: 50%;
+    animation-duration: 10s;
+    animation-delay: 0.1s;
+}
+
+.balloon:nth-child(7) {
+    left: 60%;
+    animation-duration: 14s;
+    animation-delay: 0.3s;
+}
+
+/* Confetti Effect */
+.confetti {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: transparent;
+    overflow: hidden;
+    z-index: 999;
+}
+
+.confetti-piece {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #ff99c8;
+    animation: confetti 5s infinite ease-in-out;
+    opacity: 0;
+}
+
+@keyframes confetti {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+.confetti-piece:nth-child(odd) {
+    background: #ff6f9c;
+}
+
+.confetti-piece:nth-child(even) {
+    background: #ffb6d5;
+}
+
+.countdown {
+    margin-top: 20px;
+    background: rgba(255, 240, 246, 0.9);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.countdown-timer {
+    font-size: 1.5rem;
+    color: #ff1493;
+}
+
+/* Responsiveness for small screens */
+@media (max-width: 768px) {
+    .cake {
+        width: 120px; /* Kue lebih kecil untuk layar kecil */
+        height: 160px; /* Tinggi kue disesuaikan */
+    }
+
+    .layer-bottom {
+        width: 120px;
+        height: 40px;
+    }
+
+    .layer-middle {
+        width: 100px;
+        height: 35px;
+    }
+
+    .layer-top {
+        width: 80px;
+        height: 30px;
+    }
+
+    .candles {
+        bottom: 130px; /* Posisi lilin diatur ulang untuk layar kecil */
+    }
+
+    .candle {
+        width: 8px; /* Ukuran lilin lebih kecil */
+        height: 25px;
+    }
+
+    .flame {
+        width: 8px;
+        height: 8px;
+    }
+
+    /* Balloon adjustments for smaller screens */
+    .balloon {
+        width: 50px; /* Ukuran balon lebih kecil */
+        height: 70px;
+    }
+
+    .play-button {
+        font-size: 0.9rem; /* Ukuran teks tombol lebih kecil */
+        padding: 8px 16px;
+    }
+
+    .countdown {
+        font-size: 1rem; /* Sesuaikan ukuran font hitungan mundur */
+    }
+}
+
+/* Very small screens (mobile portrait) */
+@media (max-width: 480px) {
+    .cake {
+        width: 100px; /* Lebih kecil lagi untuk layar ponsel sangat kecil */
+        height: 140px;
+    }
+
+    .layer-bottom {
+        width: 100px;
+        height: 35px;
+    }
+
+    .layer-middle {
+        width: 80px;
+        height: 30px;
+    }
+
+    .layer-top {
+        width: 60px;
+        height: 25px;
+    }
+
+    .candles {
+        bottom: 110px;
+    }
+
+    .candle {
+        width: 6px;
+        height: 20px;
+    }
+
+    .flame {
+        width: 6px;
+        height: 6px;
+    }
+
+    .balloon {
+        width: 40px; /* Ukuran balon lebih kecil */
+        height: 60px;
+    }
+
+    .play-button {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+
+    .countdown {
+        font-size: 0.9rem;
+    }
+}
+
